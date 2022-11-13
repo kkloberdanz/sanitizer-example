@@ -1,0 +1,4 @@
+divide-by-zero
+*.sw?
+.DS_Store
+*.o
