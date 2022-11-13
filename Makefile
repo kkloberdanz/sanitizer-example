@@ -20,6 +20,10 @@ BINS = $(patsubst %.c,%.exe,$(SRC))
 sanitize: OPT=-O0 -ggdb3 -fsanitize=float-divide-by-zero,float-cast-overflow,integer-divide-by-zero
 sanitize: all
 
+.PHONY: debug
+debug: OPT=-O0 -ggdb3
+debug: all
+
 .PHONY: all
 all: $(BINS)
 
