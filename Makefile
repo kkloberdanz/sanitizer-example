@@ -1,3 +1,5 @@
+# (C) 2022 Kyle Kloberdanz
+
 CC=cc
 OPT=-O2
 STD=-std=gnu18

@@ -1,3 +1,12 @@
+/*
+ * (C) 2022 Kyle Kloberdanz
+ *
+ * This program reads bytes from stdin and converts the bytes into double
+ * precision floats, interpreting the bytes as little endian.
+ *
+ * You can use thins on UNIX (e.g. MacOS)/Linux platforms as follows:
+ * $ cat /dev/urandom | ./stdin-div.exe
+ */
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

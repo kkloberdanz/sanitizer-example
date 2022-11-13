@@ -1,3 +1,6 @@
+/*
+ * (C) 2022 Kyle Kloberdanz
+ */
 #include <stdio.h>
 
 int main(void) {
