@@ -12,20 +12,17 @@ CFLAGS=$(WARNING) $(STD) $(OPT) $(FLAGS)
 
 SRC = $(wildcard *.c)
 HEADERS = $(wildcard *.h)
-OBJS = $(patsubst %.c,%.o,$(SRC))
+BINS = $(patsubst %.c,%.exe,$(SRC))
 
 .PHONY: sanitize
-sanitize: OPT=-O0 -ggdb3 -fsanitize=float-divide-by-zero
+sanitize: OPT=-O0 -ggdb3 -fsanitize=float-divide-by-zero,float-cast-overflow,integer-divide-by-zero
 sanitize: all
 
 .PHONY: all
-all: divide-by-zero
+all: $(BINS)
 
-divide-by-zero: $(OBJS)
-	$(CC) -o divide-by-zero $(OBJS) $(CFLAGS) $(LDFLAGS)
-
-%.o: %.c $(HEADERS)
-	$(CC) -c $< -o $@ $(CFLAGS)
+%.exe: %.c $(HEADERS)
+	$(CC) $< -o $@ $(CFLAGS)
 
 .PHONY: lint
 lint:
@@ -37,5 +34,6 @@ fmt:
 
 .PHONY: clean
 clean:
-	rm -f divide-by-zero
+	rm -f *.exe
 	rm -f *.o
+	rm -rf *.dSYM
